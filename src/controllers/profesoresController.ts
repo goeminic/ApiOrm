@@ -59,4 +59,4 @@ class ProfesoresController{
 
 export default new ProfesoresController();
 
-//falta implementar profesores controller quede en 1:54
+

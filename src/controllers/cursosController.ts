@@ -7,7 +7,7 @@ class CursosController {
 
     consultar(req: Request, res: Response){
         try{
-            res.send("Consultar");
+            res.send("Consultar Cursos");
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
@@ -48,6 +48,16 @@ class CursosController {
     borrar(req: Request, res: Response){
         try{
             res.send("Eliminar Curso");
+        }catch(err){
+            if(err instanceof Error){
+                res.status(500).send(err.message);
+            }
+        }
+    }
+
+    asociarEstudiante(req: Request, res: Response){
+        try{
+            res.send("Asociar Estudiante a un curso");
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
