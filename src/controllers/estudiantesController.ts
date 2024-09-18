@@ -7,7 +7,7 @@ class EstudiantesController {
 
     consultar(req: Request, res: Response) {
         try{
-            res.send("Consultar");
+            res.send("Consultar Estudiante");
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
@@ -17,7 +17,7 @@ class EstudiantesController {
 
     consultarDetalle(req: Request, res:Response){
         try{
-            res.send("Consultar Detalle");
+            res.send("Consultar Detalle Estudiante");
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
@@ -37,7 +37,7 @@ class EstudiantesController {
 
     actualizar(req: Request, res: Response){
         try{
-            res.send("Actualizar");
+            res.send("Actualizar Estudiante");
         }catch (err){
             if (err instanceof Error){
                 res.status(500).send(err.message);
