@@ -1,22 +1,16 @@
-import express from 'express';
-import cors from 'cors';
-import morgan from 'morgan';
-import estudiantesRoutes from './routes/estudiantesRoutes';
-import profesoresRoutes from './routes/profesoresRoutes';
-import cursosRoutes from './routes/cursosRoutes';
+import app from './app';
+import { AppDataSource } from './db/conexion';
 
-const app = express();
+async function main() {
+    await AppDataSource.initialize();
+    app.listen(6505,()=>{
+        console.log("Servidor Activo");
+    });
+}
 
-app.use(morgan('dev'));
-app.use(cors());
+//quede en 2:08
 
-app.use("/estudiantes",estudiantesRoutes);
-app.use("/profesores",profesoresRoutes);
-app.use("/cursos",cursosRoutes);
+main();
 
-//quede en 1:59
 
-app.listen(6505,()=>{
-    console.log("Servidor Activo");
-});
 
