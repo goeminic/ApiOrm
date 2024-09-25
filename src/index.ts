@@ -15,7 +15,7 @@ async function main() {
     }    
 }
 
-//quede en 2:18
+//quede en 2:26 Comienzo a elaborar relacion de estudiantes y cursos
 
 main();
 

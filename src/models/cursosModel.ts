@@ -1,7 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Profesores } from "./profesoresModel";
 
 
-@Entity()
+@Entity('cursos')
 export class Cursos {
     @PrimaryGeneratedColumn()
     id: number;
@@ -9,9 +10,16 @@ export class Cursos {
     @Column()
     nombre: String;
 
-    @Column()
+    @Column('text')
     descripcion: String;
 
-    @Column()
-    id_profesor:number;
+    @CreateDateColumn()
+    createdAT: Date;
+
+    @UpdateDateColumn()
+    udatedAT: Date;
+
+    @ManyToOne(() => Profesores, (Profesores)=>Profesores.cursos)
+    @JoinColumn({name:'profesor_id'})
+    profesor: Profesores
 }
