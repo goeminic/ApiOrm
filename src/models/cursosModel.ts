@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Profesores } from "./profesoresModel";
+import { Estudiantes } from "./estudiantesModel";
 
 
 @Entity('cursos')
@@ -22,4 +23,12 @@ export class Cursos {
     @ManyToOne(() => Profesores, (Profesores)=>Profesores.cursos)
     @JoinColumn({name:'profesor_id'})
     profesor: Profesores
+
+    @ManyToMany(()=>Estudiantes)
+    @JoinTable({
+        name:'cursos_estudiantes',
+        joinColumn: {name:'curso_id'},
+        inverseJoinColumn: {name:'estudiante_id'}
+    })
+    estudiantes: Estudiantes[];
 }
