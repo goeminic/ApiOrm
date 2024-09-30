@@ -2,7 +2,7 @@ import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, U
 
 @Entity('estudiantes')
 export class Estudiantes extends BaseEntity{
-    
+ 
     @PrimaryGeneratedColumn()
     id: number;
 
