@@ -1,10 +1,10 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Profesores } from "./profesoresModel";
 import { Estudiantes } from "./estudiantesModel";
 
 
 @Entity('cursos')
-export class Cursos {
+export class Cursos extends BaseEntity{
     @PrimaryGeneratedColumn()
     id: number;
 

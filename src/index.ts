@@ -15,8 +15,7 @@ async function main() {
     }    
 }
 
-//quede en 2:40 1-Se completo implementacion de estudiantes Controller 2- falta implementar profesores y cursos controller y testing
-
+//quede en 2:40 1-falta implementar cursos controller y testing de profesores y cursos
 
 main();
 
