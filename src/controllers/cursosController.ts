@@ -1,13 +1,16 @@
 import { Request, Response } from "express";
+import { Cursos } from "../models/cursosModel";
+import { error } from "console";
 
 class CursosController {
     constructor(){
 
     }
 
-    consultar(req: Request, res: Response){
+    async consultar(req: Request, res: Response){
         try{
-            res.send("Consultar Cursos");
+            const data = await Cursos.find();
+            res.status(200).json(data);
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
@@ -15,9 +18,15 @@ class CursosController {
         }
     }
 
-    consultarDetalle(req: Request, res:Response){
+    async consultarDetalle(req: Request, res:Response){
+        const {id} = req.params;
         try{
-            res.send("Consultar detalle de curso");
+            const registro = await Cursos.findOneBy({id: Number(id)});
+            if(!registro){
+                throw new Error('Registro no encontrado');
+            }else{
+                res.status(200).json(registro);
+            }
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
@@ -25,9 +34,10 @@ class CursosController {
         }
     }
 
-    ingresar(req: Request, res: Response){
+    async ingresar(req: Request, res: Response){
         try{
-            res.send("Ingresar Curso");
+            const registro = await Cursos.save(req.body);
+            res.status(201).json(registro);
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
@@ -35,9 +45,17 @@ class CursosController {
         }
     }
 
-    actualizar(req: Request, res: Response){
+    async actualizar(req: Request, res: Response){
+        const {id} = req.params;
         try{
-            res.send("actualizar curso");
+            const registro = await Cursos.findOneBy({id: Number(id)});
+            if(!registro){
+                throw new Error('Registro no encontrado');
+            }else{
+                await Cursos.update({id: Number(id)}, req.body);
+                const registroActualizado = await Cursos.findOneBy({id: Number(id)});
+                res.status(200).json(registroActualizado);
+            }
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
@@ -45,9 +63,16 @@ class CursosController {
         }
     }
 
-    borrar(req: Request, res: Response){
+    async borrar(req: Request, res: Response){
+        const {id} = req.params;
         try{
-            res.send("Eliminar Curso");
+            const registro = await Cursos.findOneBy({id: Number(id)});
+            if(!registro){
+                throw new Error('Registro no encontrado');
+            }else{
+                await Cursos.delete({id: Number(id)});
+                res.status(204);
+            }
         }catch(err){
             if(err instanceof Error){
                 res.status(500).send(err.message);
