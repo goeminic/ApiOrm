@@ -15,7 +15,7 @@ async function main() {
     }    
 }
 
-//quede en 2:40 1-falta implementar cursos controller y testing de profesores y cursos
+
 
 main();
 
